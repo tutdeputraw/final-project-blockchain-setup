@@ -57,7 +57,7 @@ services:
       - ORDERER_GENERAL_LOGLEVEL=DEBUG
       - CORE_PEER_LOCALMSPID=Org3MSP
 
-      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=artifacts_test
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=hlf_docker_network
 
       - CORE_PEER_ID=peer0.org3.example.com
       - CORE_PEER_ADDRESS=peer0.org3.example.com:11051
@@ -103,7 +103,7 @@ services:
       - ORDERER_GENERAL_LOGLEVEL=debug
       - CORE_PEER_LOCALMSPID=Org3MSP
 
-      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=artifacts_test
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=hlf_docker_network
 
       - CORE_PEER_ID=peer1.org3.example.com
       - CORE_PEER_ADDRESS=peer1.org3.example.com:12051
