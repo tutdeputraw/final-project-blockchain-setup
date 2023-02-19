@@ -1,0 +1,24 @@
+docker swarm setup for hyperledger
+
+vm1	org1		- 34.125.215.202
+vm2	org2		- 34.133.160.212
+vm3	org3	    - 34.88.30.96
+vm4	orderer	    - 34.145.91.212
+
+# vm1
+docker swarm init --advertise-addr 34.125.215.202
+docker swarm join-token manager
+
+# vm2
+docker swarm join --token SWMTKN-1-4ube4qn4cgkn85cknv86ptbzvj8n1d0p6itghydamf68wdm5fh-f48aw57tme0euqu8oojg010mm 34.125.220.207:2377 --advertise-addr 34.133.160.212
+docker swarm join --token SWMTKN-1-5kciragwhwjyrxqw0e74t0kkut2u7f9hx8579xm82oov3yd8kj-0hljho1ocn9js02ei0c1quqim 34.125.215.202:2377 --advertise-addr 34.78.248.112
+# vm3
+docker swarm join --token SWMTKN-1-4ube4qn4cgkn85cknv86ptbzvj8n1d0p6itghydamf68wdm5fh-f48aw57tme0euqu8oojg010mm 34.125.220.207:2377 --advertise-addr 34.88.30.96
+# vm4
+docker swarm join --token SWMTKN-1-4ube4qn4cgkn85cknv86ptbzvj8n1d0p6itghydamf68wdm5fh-f48aw57tme0euqu8oojg010mm 34.125.220.207:2377 --advertise-addr 34.145.91.212
+
+# use the command bellow to leave the joined docker swarm network
+docker swarm leave --force
+
+# you just need to run this command to create the overlay artifacts_test network
+docker network create --attachable --driver overlay artifacts_test

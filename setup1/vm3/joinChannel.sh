@@ -5,6 +5,9 @@ export FABRIC_CFG_PATH=${PWD}/../../artifacts/channel/config/
 
 export CHANNEL_NAME=mychannel
 
+# IP ADDRESS
+# IP_ORDERER=34.82.118.101
+
 setGlobalsForPeer0Org3() {
     export CORE_PEER_LOCALMSPID="Org3MSP"
     export CORE_PEER_TLS_ROOTCERT_FILE=$PEER0_ORG3_CA
@@ -18,7 +21,6 @@ setGlobalsForPeer1Org3() {
     export CORE_PEER_TLS_ROOTCERT_FILE=$PEER0_ORG3_CA
     export CORE_PEER_MSPCONFIGPATH=${PWD}/crypto-config/peerOrganizations/org3.example.com/users/Admin@org3.example.com/msp
     export CORE_PEER_ADDRESS=localhost:12051
-
 }
 
 fetchChannelBlock() {
@@ -26,7 +28,7 @@ fetchChannelBlock() {
     setGlobalsForPeer0Org3
 
     # Replace localhost with your orderer's vm IP address
-    peer channel fetch 0 ./channel-artifacts/$CHANNEL_NAME.block -o localhost:7050 \
+    peer channel fetch 0 ./channel-artifacts/$CHANNEL_NAME.block -o $VM_4:7050 \
         --ordererTLSHostnameOverride orderer.example.com \
         -c $CHANNEL_NAME --tls --cafile $ORDERER_CA
 }
@@ -48,7 +50,7 @@ updateAnchorPeers() {
     setGlobalsForPeer0Org3
 
     # Replace localhost with your orderer's vm IP address
-    peer channel update -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com \
+    peer channel update -o $VM_4:7050 --ordererTLSHostnameOverride orderer.example.com \
         -c $CHANNEL_NAME -f ./../../artifacts/channel/${CORE_PEER_LOCALMSPID}anchors.tx \
         --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA
 

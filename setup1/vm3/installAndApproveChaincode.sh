@@ -6,6 +6,10 @@ export FABRIC_CFG_PATH=${PWD}/../../artifacts/channel/config/
 
 export CHANNEL_NAME=mychannel
 
+# IP ADDRESS
+# IP_ORDERER=34.82.118.101
+
+
 setGlobalsForPeer0Org3() {
     export CORE_PEER_LOCALMSPID="Org3MSP"
     export CORE_PEER_TLS_ROOTCERT_FILE=$PEER0_ORG3_CA
@@ -29,7 +33,7 @@ presetup() {
     popd
     echo Finished vendoring Go dependencies
 }
-# presetup
+presetup
 
 CHANNEL_NAME="mychannel"
 CC_RUNTIME_LANGUAGE="golang"
@@ -45,7 +49,7 @@ packageChaincode() {
         --label ${CC_NAME}_${VERSION}
     echo "===================== Chaincode is packaged on peer0.org3 ===================== "
 }
-# packageChaincode
+packageChaincode
 
 installChaincode() {
     setGlobalsForPeer0Org3
@@ -54,7 +58,7 @@ installChaincode() {
 
 }
 
-# installChaincode
+installChaincode
 
 queryInstalled() {
     setGlobalsForPeer0Org3
@@ -71,7 +75,7 @@ queryInstalled() {
 approveForMyOrg3() {
     setGlobalsForPeer0Org3
 
-    peer lifecycle chaincode approveformyorg -o localhost:7050 \
+    peer lifecycle chaincode approveformyorg -o $VM_4:7050 \
         --ordererTLSHostnameOverride orderer.example.com --tls $CORE_PEER_TLS_ENABLED \
         --cafile $ORDERER_CA --channelID $CHANNEL_NAME --name ${CC_NAME} \
         --version ${VERSION} --init-required --package-id ${PACKAGE_ID} \
@@ -79,8 +83,8 @@ approveForMyOrg3() {
 
     echo "===================== chaincode approved from org 3 ===================== "
 }
-# queryInstalled
-# approveForMyOrg3
+queryInstalled
+approveForMyOrg3
 
 checkCommitReadyness() {
 
@@ -91,4 +95,4 @@ checkCommitReadyness() {
     echo "===================== checking commit readyness from org 3 ===================== "
 }
 
-# checkCommitReadyness
+checkCommitReadyness
