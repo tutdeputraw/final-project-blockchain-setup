@@ -88,7 +88,7 @@ approveForMyOrg1() {
     setGlobalsForPeer0Org1
     # set -x
     # Replace localhost with your orderer's vm IP address
-    peer lifecycle chaincode approveformyorg -o localhost:7050 \
+    peer lifecycle chaincode approveformyorg -o $VM_4:7050 \
         --ordererTLSHostnameOverride orderer.example.com --tls \
         --cafile $ORDERER_CA --channelID $CHANNEL_NAME --name ${CC_NAME} --version ${VERSION} \
         --init-required --package-id ${PACKAGE_ID} \
@@ -114,7 +114,7 @@ checkCommitReadyness() {
 
 commitChaincodeDefination() {
     setGlobalsForPeer0Org1
-    peer lifecycle chaincode commit -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com \
+    peer lifecycle chaincode commit -o $VM_4:7050 --ordererTLSHostnameOverride orderer.example.com \
         --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA \
         --channelID $CHANNEL_NAME --name ${CC_NAME} \
         --peerAddresses localhost:7051 --tlsRootCertFiles $PEER0_ORG1_CA \
@@ -135,7 +135,7 @@ queryCommitted() {
 
 chaincodeInvokeInit() {
     setGlobalsForPeer0Org1
-    peer chaincode invoke -o localhost:7050 \
+    peer chaincode invoke -o $VM_4:7050 \
         --ordererTLSHostnameOverride orderer.example.com \
         --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA \
         -C $CHANNEL_NAME -n ${CC_NAME} \
@@ -153,7 +153,7 @@ chaincodeInvoke() {
     setGlobalsForPeer0Org1
 
     ## Create Car
-    peer chaincode invoke -o localhost:7050 \
+    peer chaincode invoke -o $VM_4:7050 \
         --ordererTLSHostnameOverride orderer.example.com \
         --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA \
         -C $CHANNEL_NAME -n ${CC_NAME} \
