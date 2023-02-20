@@ -1,0 +1,86 @@
+# docker swarm leave --force
+
+
+# docker system prune
+
+
+# define ip address here!
+vm1	org1		- 34.125.25.44
+vm2	org2		- 104.198.169.242
+vm3	org3	- 34.88.172.209
+vm4	orderer	- 34.82.118.101
+
+
+# note: dont forget to change the docker swarm token
+# vm1
+docker swarm init --advertise-addr 34.125.215.202
+docker swarm join-token manager
+# vm2
+docker swarm join --token SWMTKN-1-41fazxbhw1w4t2oxid0lj7278zjchgovntjj2knraazdhpjah1-8kar81ea4o2d66jqzh0gm65xb 34.125.215.202:2377 --advertise-addr 104.198.169.242
+docker swarm join --token SWMTKN-1-2yve6y2gsn0h6csiqnay67n3zsogeidsyvoho4xpt8kwf67gwk-6r8bxaia8osoxc1y4g71v3bak 34.125.25.44:2377 --advertise-addr
+docker swarm join --token SWMTKN-1-2yve6y2gsn0h6csiqnay67n3zsogeidsyvoho4xpt8kwf67gwk-6r8bxaia8osoxc1y4g71v3bak 34.125.25.44:2377 --advertise-addr 104.198.169.242
+docker swarm join --token SWMTKN-1-2yve6y2gsn0h6csiqnay67n3zsogeidsyvoho4xpt8kwf67gwk-6r8bxaia8osoxc1y4g71v3bak 34.125.25.44:2377 --advertise-addr 34.88.172.209
+docker swarm join --token SWMTKN-1-2yve6y2gsn0h6csiqnay67n3zsogeidsyvoho4xpt8kwf67gwk-6r8bxaia8osoxc1y4g71v3bak 34.125.25.44:2377 --advertise-addr 34.82.118.101
+
+docker swarm join --token SWMTKN-1-5kciragwhwjyrxqw0e74t0kkut2u7f9hx8579xm82oov3yd8kj-0hljho1ocn9js02ei0c1quqim 34.125.215.202:2377 --advertise-addr 34.78.248.112
+# vm3
+docker swarm join --token SWMTKN-1-41fazxbhw1w4t2oxid0lj7278zjchgovntjj2knraazdhpjah1-8kar81ea4o2d66jqzh0gm65xb 34.125.215.202:2377 --advertise-addr 34.88.172.209
+# vm4
+docker swarm join --token SWMTKN-1-41fazxbhw1w4t2oxid0lj7278zjchgovntjj2knraazdhpjah1-8kar81ea4o2d66jqzh0gm65xb 34.125.215.202:2377 --advertise-addr 34.82.118.101
+
+
+# docker network create --attachable --driver overlay artifacts_test
+
+
+# vm1
+# docker-compose up -d 
+# vm2
+# docker-compose up -d 
+# vm3
+# docker-compose up -d 
+
+
+# note: dont forget to change the orderer ip address
+# vm1
+run createChannel
+# vm2
+run joinChannel
+# vm3
+run joinChannel
+
+
+# note: dont forget to change the orderer ip address
+# vm1
+run deployChaincode 
+[
+    presetup
+    packageChaincode
+    installChaincode
+    queryInstalled
+    approveForMyOrg1
+    checkCommitReadyness
+]
+# vm2
+run deployChaincode
+# vm3
+run deployChaincode
+
+
+# vm1
+docker exec -it cli bash
+execute the commands from the "CLI-Execution" file
+
+
+# vm1
+run deployChaincode
+[
+    queryCommitted
+]
+
+
+# check couchdb
+http://34.125.25.44:6984/_utils
+34.133.160.212:7984/_utils
+http://34.88.172.209:9984/_utils
+
+34.133.160.212:7984/_utils
