@@ -46,6 +46,8 @@ func (s *SmartContract) Invoke(APIstub shim.ChaincodeStubInterface) sc.Response 
 	logger.Infof("Args length is : %d", len(args))
 
 	switch function {
+	case "getDeveloper":
+		return s.getDevelopers(APIstub)
 	case "queryCar":
 		return s.queryCar(APIstub, args)
 	case "initLedger":
@@ -349,6 +351,10 @@ func (s *SmartContract) createCar(APIstub shim.ChaincodeStubInterface, args []st
 	APIstub.PutState(colorNameIndexKey, value)
 
 	return shim.Success(carAsBytes)
+}
+
+func (S *SmartContract) getDevelopers(APIstub shim.ChaincodeStubInterface) sc.Response {
+	return shim.Success([]byte("jono"))
 }
 
 func (S *SmartContract) queryCarsByOwner(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
