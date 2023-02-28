@@ -50,7 +50,7 @@ presetup() {
 
 CHANNEL_NAME="mychannel"
 CC_RUNTIME_LANGUAGE="golang"
-VERSION="2"
+VERSION="3"
 CC_SRC_PATH="./../../artifacts/src/github.com/fabcar/go"
 CC_NAME="fabcar"
 
@@ -198,7 +198,7 @@ chaincodeQuery() {
 # approveForMyOrg1
 # checkCommitReadyness
 #--------------------
-# queryCommitted
+queryCommitted
 ######
 
 # packageChaincode

@@ -50,7 +50,7 @@ updateAnchorPeers(){
     
 }
 
-# updateAnchorPeers
+updateAnchorPeers
 
 # removeOldCrypto
 
