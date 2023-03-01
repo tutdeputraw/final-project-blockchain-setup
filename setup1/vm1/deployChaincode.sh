@@ -140,7 +140,7 @@ chaincodeInvokeInit() {
         --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA \
         -C $CHANNEL_NAME -n ${CC_NAME} \
         --peerAddresses localhost:9051 --tlsRootCertFiles $PEER0_ORG2_CA \
-         --peerAddresses localhost:11051 --tlsRootCertFiles $PEER0_ORG3_CA \
+        --peerAddresses localhost:11051 --tlsRootCertFiles $PEER0_ORG3_CA \
         --isInit -c '{"Args":[]}'
 
 }
@@ -190,12 +190,12 @@ chaincodeQuery() {
 # presetup
 
 # [
-presetup
-packageChaincode
-installChaincode
-queryInstalled
-approveForMyOrg1
-checkCommitReadyness
+# presetup
+# packageChaincode
+# installChaincode
+# queryInstalled
+# approveForMyOrg1
+# checkCommitReadyness
 # ]
 # [
 # queryCommitted
@@ -210,7 +210,7 @@ checkCommitReadyness
 # checkCommitReadyness
 # commitChaincodeDefination
 # queryCommitted
-# chaincodeInvokeInit
+chaincodeInvokeInit
 # sleep 5
 # chaincodeInvoke
 # sleep 3
