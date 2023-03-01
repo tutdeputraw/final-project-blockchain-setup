@@ -56,4 +56,10 @@ updateAnchorPeers(){
 
 # createChannel
 # joinChannel
-updateAnchorPeers
+# updateAnchorPeers
+
+# testa() {
+#     setGlobalsForPeer0Org1
+#     peer channel list
+# }
+# testa
