@@ -13,13 +13,31 @@ type SmartContract struct {
 }
 
 type User struct {
-	Id   string `json:"id"`
-	Name string `json:"name"`
+	Id          string `json:"id"`
+	Name        string `json:"name"`
+	NPWPNumber  int    `json:"npwp_number"`
+	PhoneNumber int    `json:"phone_number"`
+	Email       string `json:"email"`
+}
+
+type RealEstateTransactionHistory struct {
+	Id         int    `json:"id"`
+	OwnerID    string `json:"owner_id"`
+	RealEstate string `json:"real_estate_id"`
 }
 
 type RealEstate struct {
-	Id      string `json:"id"`
-	Address string `json:"address"`
+	Id          string  `json:"id"`
+	Price       string  `json:"price"`
+	Bed         int     `json:"bed"`
+	Bath        int     `json:"bed"`
+	AcreLot     int     `json:"acre_lot"`
+	FullAddress string  `json:"full_address"`
+	Street      string  `json:"street"`
+	City        string  `json:"city"`
+	State       string  `json"state"`
+	ZipCode     int     `json"zip_code"`
+	HouseSize   float64 `json"house_size"`
 }
 
 func (s *SmartContract) Init(APIStub shim.ChaincodeStubInterface) sc.Response {
