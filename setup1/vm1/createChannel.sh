@@ -54,6 +54,6 @@ updateAnchorPeers(){
 
 # removeOldCrypto
 
-createChannel
-joinChannel
+# createChannel
+# joinChannel
 updateAnchorPeers
