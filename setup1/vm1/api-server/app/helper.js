@@ -29,11 +29,43 @@ const getWallet = async org => {
     return wallet;
 };
 
+const getWalletPath = org => {
+    const organization = org.toLowerCase();
+    const walletPath = path.join(process.cwd(), 'wallet', organization);
+    return walletPath;
+};
+
+const convertQueryToJSON = result => {
+    const resultInString = result.toString();
+    const resultInJson = resultInString.match(/\{.*?\}/g).map((str) => JSON.parse(str));
+    return resultInJson;
+};
+
+const responseError = field => {
+    return {
+        success: false,
+        message: field + ' field is missing or Invalid in the request'
+    };
+}
+
+const responseSuccess = (message, data) => {
+    return {
+        success: true,
+        message: message || "success",
+        data,
+    };
+}
+
 
 module.exports = {
     getCCP,
     getCA,
     getWallet,
+    getWalletPath,
+    convertQueryToJSON,
+    getErrorMessage: responseError,
+    responseSuccess,
+    responseError,
     // getCCP: getCCP,
     // getWalletPath: getWalletPath,
     // getRegisteredUser: getRegisteredUser,
