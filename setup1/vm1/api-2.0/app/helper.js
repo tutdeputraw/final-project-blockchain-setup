@@ -7,7 +7,7 @@ const fs = require('fs');
 
 const util = require('util');
 
-const getCCP = async (org) => {
+const GetCCPHelper = async (org) => {
     let ccpPath;
     if (org == "Org1") {
         ccpPath = path.resolve(__dirname, '..', 'config', 'connection-org1.json');
@@ -21,7 +21,7 @@ const getCCP = async (org) => {
     return ccp
 }
 
-const getCaUrl = async (org, ccp) => {
+const GetCAHelperUrl = async (org, ccp) => {
     let caURL;
     if (org == "Org1") {
         caURL = ccp.certificateAuthorities['ca.org1.example.com'].url;
@@ -34,7 +34,7 @@ const getCaUrl = async (org, ccp) => {
 
 }
 
-const getWalletPath = async (org) => {
+const GetWalletHelperPath = async (org) => {
     let walletPath;
     if (org == "Org1") {
         walletPath = path.join(process.cwd(), 'org1-wallet');
@@ -53,12 +53,12 @@ const getAffiliation = async (org) => {
 }
 
 const getRegisteredUser = async (username, userOrg, isJson) => {
-    let ccp = await getCCP(userOrg)
+    let ccp = await GetCCPHelper(userOrg)
 
-    const caURL = await getCaUrl(userOrg, ccp)
+    const caURL = await GetCAHelperUrl(userOrg, ccp)
     const ca = new FabricCAServices(caURL);
 
-    const walletPath = await getWalletPath(userOrg)
+    const walletPath = await GetWalletHelperPath(userOrg)
     const wallet = await Wallets.newFileSystemWallet(walletPath);
     console.log(`Wallet path: ${walletPath}`);
 
@@ -141,7 +141,7 @@ const getRegisteredUser = async (username, userOrg, isJson) => {
 }
 
 const isUserRegistered = async (username, userOrg) => {
-    const walletPath = await getWalletPath(userOrg)
+    const walletPath = await GetWalletHelperPath(userOrg)
     const wallet = await Wallets.newFileSystemWallet(walletPath);
     console.log(`Wallet path: ${walletPath}`);
 
@@ -154,7 +154,7 @@ const isUserRegistered = async (username, userOrg) => {
 }
 
 
-const getCaInfo = async (org, ccp) => {
+const GetCAHelperInfo = async (org, ccp) => {
     let caInfo
     if (org == "Org1") {
         caInfo = ccp.certificateAuthorities['ca.org1.example.com'];
@@ -173,12 +173,12 @@ const enrollAdmin = async (org, ccp) => {
 
     try {
 
-        const caInfo = await getCaInfo(org, ccp) //ccp.certificateAuthorities['ca.org1.example.com'];
+        const caInfo = await GetCAHelperInfo(org, ccp) //ccp.certificateAuthorities['ca.org1.example.com'];
         const caTLSCACerts = caInfo.tlsCACerts.pem;
         const ca = new FabricCAServices(caInfo.url, { trustedRoots: caTLSCACerts, verify: false }, caInfo.caName);
 
         // Create a new file system based wallet for managing identities.
-        const walletPath = await getWalletPath(org) //path.join(process.cwd(), 'wallet');
+        const walletPath = await GetWalletHelperPath(org) //path.join(process.cwd(), 'wallet');
         const wallet = await Wallets.newFileSystemWallet(walletPath);
         console.log(`Wallet path: ${walletPath}`);
 
@@ -221,12 +221,12 @@ const enrollAdmin = async (org, ccp) => {
 }
 
 const registerAndGerSecret = async (username, userOrg) => {
-    let ccp = await getCCP(userOrg)
+    let ccp = await GetCCPHelper(userOrg)
 
-    const caURL = await getCaUrl(userOrg, ccp)
+    const caURL = await GetCAHelperUrl(userOrg, ccp)
     const ca = new FabricCAServices(caURL);
 
-    const walletPath = await getWalletPath(userOrg)
+    const walletPath = await GetWalletHelperPath(userOrg)
     const wallet = await Wallets.newFileSystemWallet(walletPath);
     console.log(`Wallet path: ${walletPath}`);
 
@@ -274,8 +274,8 @@ const registerAndGerSecret = async (username, userOrg) => {
 exports.getRegisteredUser = getRegisteredUser
 
 module.exports = {
-    getCCP: getCCP,
-    getWalletPath: getWalletPath,
+    GetCCPHelper: GetCCPHelper,
+    GetWalletHelperPath: GetWalletHelperPath,
     getRegisteredUser: getRegisteredUser,
     isUserRegistered: isUserRegistered,
     registerAndGerSecret: registerAndGerSecret

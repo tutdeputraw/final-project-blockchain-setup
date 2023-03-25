@@ -15,7 +15,7 @@ const query = async (channelName, chaincodeName, args, fcn, username, org_name) 
         // load the network configuration
         // const ccpPath = path.resolve(__dirname, '..', 'config', 'connection-org1.json');
         // const ccpJSON = fs.readFileSync(ccpPath, 'utf8')
-        const ccp = await helper.getCCP(org_name) //JSON.parse(ccpJSON);
+        const ccp = await helper.GetCCPHelper(org_name) //JSON.parse(ccpJSON);
 
         // Create a new file system based wallet for managing identities.
         const walletPath = await helper.getWalletPath(org_name) //.join(process.cwd(), 'wallet');
@@ -45,13 +45,13 @@ const query = async (channelName, chaincodeName, args, fcn, username, org_name) 
         const contract = network.getContract(chaincodeName);
         let result;
 
-        if (fcn == "queryCar" || fcn =="queryCarsByOwner" || fcn == 'getHistoryForAsset' || fcn=='restictedMethod') {
+        if (fcn == "queryCar" || fcn == "queryCarsByOwner" || fcn == 'getHistoryForAsset' || fcn == 'restictedMethod') {
             console.log(`arguments type is------------------------------------------------------------- ${typeof args}`)
             console.log(`length of args is------------------------------------------------------------ ${args.length}`)
             result = await contract.evaluateTransaction(fcn, args[0]);
 
         } else if (fcn == "readPrivateCar" || fcn == "queryPrivateDataHash"
-        || fcn == "collectionCarPrivateDetails") {
+            || fcn == "collectionCarPrivateDetails") {
             result = await contract.evaluateTransaction(fcn, args[0], args[1]);
             // return result
 

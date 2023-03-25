@@ -17,7 +17,7 @@ const qscc = async (channelName, chaincodeName, args, fcn, username, org_name) =
         // load the network configuration
         // const ccpPath = path.resolve(__dirname, '..', 'config', 'connection-org1.json');
         // const ccpJSON = fs.readFileSync(ccpPath, 'utf8')
-        const ccp = await helper.getCCP(org_name) //JSON.parse(ccpJSON);
+        const ccp = await helper.GetCCPHelper(org_name) //JSON.parse(ccpJSON);
 
         // Create a new file system based wallet for managing identities.
         const walletPath = await helper.getWalletPath(org_name) //.join(process.cwd(), 'wallet');
@@ -72,7 +72,7 @@ const qscc = async (channelName, chaincodeName, args, fcn, username, org_name) =
         } else if (fcn == "GetTransactionByID") {
             result = await contract.evaluateTransaction(fcn, channelName, args[0]);
 
-            
+
 
             const fs = require('fs')
             fs.writeFileSync('./app/data/transactionData.block', result)

@@ -1,11 +1,11 @@
 const helper = require('./helper');
 const { Wallets } = require('fabric-network');
 
-const registerUser = async (user, org) => {
+const RegisterUserHelper = async (user, org) => {
     try {
-        const ccp = helper.getCCP(org);
-        const ca = helper.getCA(ccp, org);
-        const walletPath = helper.getWalletPath(org);
+        const ccp = helper.GetCCPHelper(org);
+        const ca = helper.GetCAHelper(ccp, org);
+        const walletPath = helper.GetWalletPathHelper(org);
         const wallet = await Wallets.newFileSystemWallet(walletPath);
         console.log(`Wallet path: ${walletPath}`);
 
@@ -54,5 +54,5 @@ const registerUser = async (user, org) => {
 };
 
 module.exports = {
-    registerUser,
+    RegisterUserHelper,
 }

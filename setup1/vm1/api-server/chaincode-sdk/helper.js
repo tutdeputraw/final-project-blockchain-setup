@@ -6,7 +6,7 @@ const FabricCAServices = require('fabric-ca-client');
 const fs = require('fs');
 const util = require('util');
 
-const getCCP = org => {
+const GetCCPHelper = org => {
     const organization = org.toLowerCase();
     console.log("OII ", organization);
     const ccpPath = path.resolve(__dirname, '..', 'config', `connection-${organization}.json`);
@@ -14,7 +14,7 @@ const getCCP = org => {
     return ccp;
 };
 
-const getCA = (ccp, org) => {
+const GetCAHelper = (ccp, org) => {
     const organization = org.toLowerCase();
     const caInfo = ccp.certificateAuthorities[`ca.${organization}.example.com`];
     const caTLSCACerts = caInfo.tlsCACerts.pem;
@@ -22,14 +22,14 @@ const getCA = (ccp, org) => {
     return ca;
 };
 
-const getWallet = async org => {
+const GetWalletHelper = async org => {
     const organization = org.toLowerCase();
     const walletPath = path.join(process.cwd(), '..', 'wallet', organization);
     const wallet = await Wallets.newFileSystemWallet(walletPath);
     return wallet;
 };
 
-const getWalletPath = org => {
+const GetWalletPathHelper = org => {
     const organization = org.toLowerCase();
     const walletPath = path.join(process.cwd(), 'wallet', organization);
     return walletPath;
@@ -58,17 +58,12 @@ const responseSuccess = (message, data) => {
 
 
 module.exports = {
-    getCCP,
-    getCA,
-    getWallet,
-    getWalletPath,
+    GetCCPHelper,
+    GetCAHelper,
+    GetWalletHelper,
+    GetWalletPathHelper,
     convertQueryToJSON,
     getErrorMessage: responseError,
     responseSuccess,
     responseError,
-    // getCCP: getCCP,
-    // getWalletPath: getWalletPath,
-    // getRegisteredUser: getRegisteredUser,
-    // isUserRegistered: isUserRegistered,
-    // registerAndGerSecret: registerAndGerSecret
 }

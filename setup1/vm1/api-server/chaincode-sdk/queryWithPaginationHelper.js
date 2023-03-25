@@ -1,10 +1,10 @@
-const { Gateway, Wallets } = require('fabric-network');
 const helper = require('./helper');
+const { Wallets, Gateway } = require('fabric-network');
 
-const invoke = async (org, user, contractName, functionName, args) => {
+const QueryWithPaginationHelper = async (org, user, contractName, functionName, functionArgs) => {
     try {
-        const ccp = helper.getCCP(org);
-        const walletPath = helper.getWalletPath(org);
+        const ccp = helper.GetCCPHelper(org);
+        const walletPath = helper.GetWalletPathHelper(org);
         const wallet = await Wallets.newFileSystemWallet(walletPath);
 
         console.log(`Wallet path: ${walletPath}`);
@@ -22,18 +22,22 @@ const invoke = async (org, user, contractName, functionName, args) => {
 
         const contract = network.getContract(contractName);
 
-        await contract.submitTransaction(functionName, ...args);
+        const result = await contract.evaluateTransaction(functionName, ...functionArgs);
+
+        console.log(JSON.parse(result));
 
         await gateway.disconnect();
 
-        console.log('Transaction has been submitted');
-        return helper.responseSuccess('Transaction has been submitted');
+        return helper.responseSuccess(
+            `Transaction has been evaluated`,
+            JSON.parse(result),
+        );
     } catch (error) {
-        console.error(`Failed to submit transaction: ${error}`);
-        return `Failed to submit transaction: ${error}`;
+        console.error(`Failed to evaluate transaction: ${error}`);
+        return `Failed to evaluate transaction: ${error}`;
     }
 }
 
 module.exports = {
-    invoke,
+    QueryWithPaginationHelper
 }
