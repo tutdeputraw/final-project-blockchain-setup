@@ -5,7 +5,8 @@ const { RegisterUserHelper } = require('../chaincode-sdk/registerUserHelper');
 const { QueryWithPaginationHelper } = require('../chaincode-sdk/queryWithPaginationHelper');
 const { InvokeHelper } = require('../chaincode-sdk/invokeHelper');
 
-const enrollAdminController = async (req, res) => {
+
+const ChaincodeSDKController_EnrollAdmin = async (req, res) => {
     const organizationName = req.body.organizationName;
 
     console.debug('End point : /api/enroll-admin');
@@ -26,7 +27,7 @@ const enrollAdminController = async (req, res) => {
 };
 
 
-const enrollUserController = async (req, res) => {
+const ChaincodeSDKController_EnrollUser = async (req, res) => {
     const username = req.body.username;
     const organizationName = req.body.organizationName;
 
@@ -53,7 +54,7 @@ const enrollUserController = async (req, res) => {
 };
 
 
-const invokeController = async (req, res) => {
+const ChaincodeSDKController_Invoke = async (req, res) => {
     const organizationName = req.body.organizationName;
     const username = req.body.username;
     const contractName = req.body.contractName;
@@ -98,7 +99,7 @@ const invokeController = async (req, res) => {
 };
 
 
-const queryController = async (req, res) => {
+const ChaincodeSDKController_Query = async (req, res) => {
     const username = req.body.username;
     const contractName = req.body.contractName;
     const functionName = req.body.functionName;
@@ -143,7 +144,7 @@ const queryController = async (req, res) => {
 };
 
 
-const queryWithPaginationController = async (req, res) => {
+const ChaincodeSDKController_QueryWithPagination = async (req, res) => {
     const username = req.body.username;
     const contractName = req.body.contractName;
     const functionName = req.body.functionName;
@@ -189,9 +190,9 @@ const queryWithPaginationController = async (req, res) => {
 
 
 module.exports = {
-    enrollAdminController,
-    enrollUserController,
-    invokeController,
-    queryController,
-    queryWithPaginationController,
+    ChaincodeSDKController_EnrollAdmin,
+    ChaincodeSDKController_EnrollUser,
+    ChaincodeSDKController_Invoke,
+    ChaincodeSDKController_Query,
+    ChaincodeSDKController_QueryWithPagination,
 }

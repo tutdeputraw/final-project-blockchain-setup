@@ -3,7 +3,6 @@ const { Wallets, Gateway } = require('fabric-network');
 
 const QueryHelper = async (org, user, contractName, functionName, functionArgs) => {
     try {
-        console.log("IKILO: ", functionArgs);
         const ccp = helper.GetCCPHelper(org);
         const walletPath = helper.GetWalletPathHelper(org);
         const wallet = await Wallets.newFileSystemWallet(walletPath);
@@ -29,7 +28,7 @@ const QueryHelper = async (org, user, contractName, functionName, functionArgs) 
 
         return helper.responseSuccess(
             `Transaction has been evaluated`,
-            helper.convertQueryToJSON(result),
+            JSON.parse(result.toString())
         );
     } catch (error) {
         console.error(`Failed to evaluate transaction: ${error}`);
