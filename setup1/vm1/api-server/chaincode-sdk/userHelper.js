@@ -53,6 +53,27 @@ const RegisterUserHelper = async (user, org) => {
     }
 };
 
+const CheckIfUserExistHelper = async (user, org) => {
+    try {
+        const walletPath = helper.GetWalletPathHelper(org);
+        const wallet = await Wallets.newFileSystemWallet(walletPath);
+        console.log(`Wallet path: ${walletPath}`);
+
+        const userIdentity = await wallet.get(user);
+
+        console.log("Test11", userIdentity);
+        if (userIdentity) {
+            return true;
+        } else {
+            return false;
+        }
+    } catch (error) {
+        console.log(`Failed to check "${user}": ${error}`);
+        return false;
+    }
+}
+
 module.exports = {
     RegisterUserHelper,
+    CheckIfUserExistHelper,
 }

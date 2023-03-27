@@ -12,10 +12,11 @@ router.get('/chaincode-sdk/query/pagination', chaincodeSDKController.ChaincodeSD
 
 const userController = require('../controllers/userController');
 router.post('/user/init', userController.UserController_Init);
-router.get('/user/checkIfUserExist', userController.UserController_CheckIfUserExist);
+router.post('/user/checkIfUserExist', userController.UserController_CheckIfUserExist);
 router.get('/user/getById', userController.UserController_GetById);
 router.get('/user/getAll', userController.UserController_GetAll);
 router.get('/user/create', userController.UserController_Create);
+router.get('/user/getByEmailAndName', userController.UserController_GetUserByNameAndEmail);
 
 
 const realEstateController = require('../controllers/realEstateController');

@@ -1,7 +1,7 @@
 const { QueryHelper } = require('../chaincode-sdk/queryHelper');
 const helper = require('../chaincode-sdk/helper');
-const { RegisterAdminHelper } = require('../chaincode-sdk/registerAdminHelper');
-const { RegisterUserHelper } = require('../chaincode-sdk/registerUserHelper');
+const { RegisterAdminHelper } = require('../chaincode-sdk/adminHelper');
+const { RegisterUserHelper } = require('../chaincode-sdk/userHelper');
 const { QueryWithPaginationHelper } = require('../chaincode-sdk/queryWithPaginationHelper');
 const { InvokeHelper } = require('../chaincode-sdk/invokeHelper');
 
