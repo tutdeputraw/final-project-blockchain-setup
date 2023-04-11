@@ -1,0 +1,9 @@
+{
+  "name": "caliper-02",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@hyperledger/caliper-cli": "0.3.2"
+  }
+}

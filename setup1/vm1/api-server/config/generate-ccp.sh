@@ -26,7 +26,7 @@ function yaml_ccp {
         -e "s/\${CAPORT}/$3/" \
         -e "s#\${PEERPEM}#$PP#" \
         -e "s#\${CAPEM}#$CP#" \
-        organizations/ccp-template.yaml | sed -e $'s/\\\\n/\\\n          /g'
+        ./ccp-template.yaml | sed -e $'s/\\\\n/\\\n          /g'
 }
 
 ORG=1
@@ -37,5 +37,5 @@ PEERPEM=../../crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.
 PEERPEM1=../../crypto-config/peerOrganizations/org1.example.com/peers/peer1.org1.example.com/tls/tlscacerts/tls-localhost-7054-ca-org1-example-com.pem
 CAPEM=../../crypto-config/peerOrganizations/org1.example.com/msp/tlscacerts/ca.crt
 
-echo "$(json_ccp $ORG $P0PORT $CAPORT $PEERPEM $CAPEM $PEERPEM1 $P0PORT1)" > connection-org1.json
-#echo "$(yaml_ccp $ORG $P0PORT $CAPORT $PEERPEM $CAPEM)" > organizations/peerOrganizations/org1.example.com/connection-org1.yaml
+# echo "$(json_ccp $ORG $P0PORT $CAPORT $PEERPEM $CAPEM $PEERPEM1 $P0PORT1)" > connection-org1.json
+echo "$(yaml_ccp $ORG $P0PORT $CAPORT $PEERPEM $CAPEM $PEERPEM1 $P0PORT1)" > connection-org1.yaml

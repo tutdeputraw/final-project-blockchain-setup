@@ -1,0 +1,42 @@
+2023.04.02-06:02:11.662[90m debug[39m [caliper] [blockchain] 	Constructed a winston logger with the specified settings
+2023.04.02-06:02:11.975[33m warn [39m [caliper] [bind] 	SUT SDK version is not specified, defaulting to "latest"
+2023.04.02-06:02:11.978[33m warn [39m [caliper] [bind] 	Working directory not specified. Using "/home/ubuntu/FabricMultiHostDeployment/tools/caliper-02"
+2023.04.02-06:02:11.979[32m info [39m [caliper] [bind] 	Binding for fabric@latest. This might take some time...
+2023.04.02-06:02:11.980[32m info [39m [caliper] [bind] 	Using working directory: /home/ubuntu/FabricMultiHostDeployment/tools/caliper-02
+2023.04.02-06:02:11.980[32m info [39m [caliper] [bind] 	Calling npm with: install fabric-client@1.4.8 fabric-protos@2.0.0-snapshot.1 fabric-network@1.4.8
+2023.04.02-06:02:21.845[31m error[39m [caliper] [bind] 	Failed to execute "npm" with return code 1.
+2023.04.02-06:02:35.572[90m debug[39m [caliper] [blockchain] 	Constructed a winston logger with the specified settings
+2023.04.02-06:02:35.783[33m warn [39m [caliper] [bind] 	SUT SDK version is not specified, defaulting to "latest"
+2023.04.02-06:02:35.786[33m warn [39m [caliper] [bind] 	Working directory not specified. Using "/home/ubuntu/FabricMultiHostDeployment/tools/caliper-02"
+2023.04.02-06:02:35.786[32m info [39m [caliper] [bind] 	Binding for fabric@latest. This might take some time...
+2023.04.02-06:02:35.787[32m info [39m [caliper] [bind] 	Using working directory: /home/ubuntu/FabricMultiHostDeployment/tools/caliper-02
+2023.04.02-06:02:35.787[32m info [39m [caliper] [bind] 	Calling npm with: install fabric-client@1.4.8 fabric-protos@2.0.0-snapshot.1 fabric-network@1.4.8
+2023.04.02-06:03:02.844[31m error[39m [caliper] [bind] 	Failed to execute "npm" with return code 1.
+2023.04.02-06:04:30.010[90m debug[39m [caliper] [blockchain] 	Constructed a winston logger with the specified settings
+2023.04.02-06:04:30.239[33m warn [39m [caliper] [bind] 	SUT SDK version is not specified, defaulting to "latest"
+2023.04.02-06:04:30.241[33m warn [39m [caliper] [bind] 	Working directory not specified. Using "/home/ubuntu/FabricMultiHostDeployment/tools/caliper-02"
+2023.04.02-06:04:30.241[32m info [39m [caliper] [bind] 	Binding for fabric@latest. This might take some time...
+2023.04.02-06:04:30.242[32m info [39m [caliper] [bind] 	Using working directory: /home/ubuntu/FabricMultiHostDeployment/tools/caliper-02
+2023.04.02-06:04:30.243[32m info [39m [caliper] [bind] 	Calling npm with: install fabric-client@1.4.8 fabric-protos@2.0.0-snapshot.1 fabric-network@1.4.8
+2023.04.02-06:04:35.824[31m error[39m [caliper] [bind] 	Failed to execute "npm" with return code 1.
+2023.04.02-06:06:36.174[90m debug[39m [caliper] [blockchain] 	Constructed a winston logger with the specified settings
+2023.04.02-06:06:36.499[32m info [39m [caliper] [bind] 	User-provided arguments for npm: "-g"
+2023.04.02-06:06:36.502[32m info [39m [caliper] [bind] 	Binding for fabric@1.4.1. This might take some time...
+2023.04.02-06:06:36.503[32m info [39m [caliper] [bind] 	Using working directory: /home/ubuntu/FabricMultiHostDeployment/tools/caliper-02
+2023.04.02-06:06:36.504[32m info [39m [caliper] [bind] 	Calling npm with: install -g grpc@1.14.2 fabric-ca-client@1.4.1 fabric-client@1.4.1 fabric-protos@2.0.0-snapshot.1 fabric-network@1.4.1
+2023.04.02-06:07:03.526[31m error[39m [caliper] [bind] 	Failed to execute "npm" with return code 1.
+2023.04.02-06:09:00.398[90m debug[39m [caliper] [blockchain] 	Constructed a winston logger with the specified settings
+2023.04.02-06:09:00.603[33m warn [39m [caliper] [bind] 	Working directory not specified. Using "/home/ubuntu/FabricMultiHostDeployment/tools/caliper-02"
+2023.04.02-06:09:00.605[32m info [39m [caliper] [bind] 	User-provided arguments for npm: "-g"
+2023.04.02-06:09:00.606[32m info [39m [caliper] [bind] 	Binding for fabric@1.4.8. This might take some time...
+2023.04.02-06:09:00.607[32m info [39m [caliper] [bind] 	Using working directory: /home/ubuntu/FabricMultiHostDeployment/tools/caliper-02
+2023.04.02-06:09:00.607[32m info [39m [caliper] [bind] 	Calling npm with: install -g fabric-client@1.4.8 fabric-protos@2.0.0-snapshot.1 fabric-network@1.4.8
+2023.04.02-06:09:06.775[31m error[39m [caliper] [bind] 	Failed to execute "npm" with return code 1.
+2023.04.02-06:10:29.814[90m debug[39m [caliper] [blockchain] 	Constructed a winston logger with the specified settings
+2023.04.02-06:10:30.100[32m info [39m [caliper] [cli-launch-master] 	Binding specification is present, performing binding for "fabric"
+2023.04.02-06:10:30.106[33m warn [39m [caliper] [bind] 	SUT SDK version is not specified, defaulting to "latest"
+2023.04.02-06:10:30.107[33m warn [39m [caliper] [bind] 	Working directory not specified. Using "/home/ubuntu/FabricMultiHostDeployment/tools/caliper-02"
+2023.04.02-06:10:30.108[32m info [39m [caliper] [bind] 	Binding for fabric@latest. This might take some time...
+2023.04.02-06:10:30.109[32m info [39m [caliper] [bind] 	Using working directory: /home/ubuntu/FabricMultiHostDeployment/tools/caliper-02
+2023.04.02-06:10:30.110[32m info [39m [caliper] [bind] 	Calling npm with: install fabric-client@1.4.8 fabric-protos@2.0.0-snapshot.1 fabric-network@1.4.8
+2023.04.02-06:10:35.498[31m error[39m [caliper] [bind] 	Failed to execute "npm" with return code 1.

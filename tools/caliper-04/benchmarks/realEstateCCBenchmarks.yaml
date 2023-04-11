@@ -1,0 +1,37 @@
+test:
+  name: basic-contract-benchmark
+  description: A test benchmark
+  workers:
+    type: local
+    number: 5
+  rounds:
+    - label: RealEstate_RegisterNewRealEstate
+      description: Create new real estate record benchmark
+      txNumber: 1000
+      rateControl:
+        { type: "linear-rate", opts: { startingTps: 50, finishingTps: 200 } }
+      workload:
+        module: workload/createAsset.js
+        arguments:
+          contractId: real_estate
+    - label: RealEstate_GetById
+      description: Read real estate asset by id benchmark
+      txDuration: 60
+      rateControl: { type: "fixed-load", opts: { transactionLoad: 5 } }
+      workload:
+        module: workload/readAsset.js
+        arguments:
+          assets: 10
+          contractId: real_estate
+
+monitors:
+  resource:
+    - module: docker
+      options:
+        interval: 4
+        containers:
+          [
+            "peer0.org1.example.com",
+            "peer1.org1.example.com",
+            "orderer.example.com",
+          ]

@@ -172,13 +172,13 @@ chaincodeQuery() {
 
 # packageChaincode
 # installChaincode
-# queryInstalled
+queryInstalled
 # approveForMyOrg1
 # checkCommitReadyness
 # approveForMyOrg2
 # checkCommitReadyness
 # commitChaincodeDefination
-queryCommitted
+# queryCommitted
 # chaincodeInvokeInit
 # sleep 5
 # chaincodeInvoke
