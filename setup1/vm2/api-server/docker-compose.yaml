@@ -1,0 +1,16 @@
+version: "2.1"
+
+networks:
+  test:
+
+services:
+  api:
+    # image: api-server-2
+    build: .
+    networks:
+      - test
+    ports:
+      - 4000:4000
+    volumes:
+      - /app/node_modules
+      - .:/app
