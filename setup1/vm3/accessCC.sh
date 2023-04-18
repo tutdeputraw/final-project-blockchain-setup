@@ -21,41 +21,29 @@ setGlobalsForPeer1Org3() {
 
 }
 
-fetchChannelBlock() {
-    rm -rf ./channel-artifacts/*
+query() {
+    export CC_NAME=real_estate
+
+    setGlobalsForPeer0Org3
+    
+    peer chaincode query \
+    -C $CHANNEL_NAME \
+    -n $CC_NAME \
+    -c '{"function": "RealEstate_GetAll","Args":[]}'
+}
+# query
+
+invoke() {
+    export CC_NAME=real_estate
+
     setGlobalsForPeer0Org3
 
-    # Replace localhost with your orderer's vm IP address
-    peer channel fetch 0 ./channel-artifacts/$CHANNEL_NAME.block -o $VM_4:7050 \
-        --ordererTLSHostnameOverride orderer.example.com \
-        -c $CHANNEL_NAME --tls --cafile $ORDERER_CA
+    peer chaincode invoke -o $VM_4:7050 \
+    --ordererTLSHostnameOverride orderer.example.com \
+    --tls \
+    --cafile $ORDERER_CA \
+    -C mychannel -n ${CC_NAME} \
+    --peerAddresses peer0.org3.example.com:11051 --tlsRootCertFiles $PEER0_ORG3_CA  \
+    -c '{"function": "User_Create","Args":["8080", "advisorname", "4567654", "08928495429", "advisoremail"]}'
 }
-
-# fetchChannelBlock
-
-joinChannel() {
-    setGlobalsForPeer0Org3
-    peer channel join -b ./channel-artifacts/$CHANNEL_NAME.block
-
-    setGlobalsForPeer1Org3
-    peer channel join -b ./channel-artifacts/$CHANNEL_NAME.block
-
-}
-
-# joinChannel
-
-updateAnchorPeers() {
-    setGlobalsForPeer0Org3
-
-    # Replace localhost with your orderer's vm IP address
-    peer channel update -o $VM_4:7050 --ordererTLSHostnameOverride orderer.example.com \
-        -c $CHANNEL_NAME -f ./../../artifacts/channel/${CORE_PEER_LOCALMSPID}anchors.tx \
-        --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA
-
-}
-
-# updateAnchorPeers
-
-fetchChannelBlock
-joinChannel
-updateAnchorPeers
+invoke
