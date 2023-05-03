@@ -67,7 +67,7 @@ const RealEstateController_GetAll = async (req, res) => {
     }
 
     const functionArgs = [];
-    const response = await QueryHelper(organizationName, userMSP, contractName, functionName, functionArgs);
+    const response = await QueryHelper(organizationName, userMSP, contractName, functionName);
 
     if (response && typeof response !== 'string') {
         res.json(response);
