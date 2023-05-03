@@ -1,2 +1,2 @@
 Installed chaincodes on peer:
-Package ID: real_estate_1:1244ed94e2f0123f52b1fad97c9f07935fe18366071887601495988da2141c2e, Label: real_estate_1
+Package ID: real_estate_1:0fb4159ab916fe4687e2e8e7ded0366aff2ffbe36c947b118439805bad18efd4, Label: real_estate_1
