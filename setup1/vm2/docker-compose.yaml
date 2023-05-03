@@ -73,7 +73,7 @@ services:
       - CORE_LEDGER_STATE_COUCHDBCONFIG_USERNAME=
       - CORE_LEDGER_STATE_COUCHDBCONFIG_PASSWORD=
       - CORE_METRICS_PROVIDER=prometheus
-      # - CORE_OPERATIONS_LISTENADDRESS=0.0.0.0:9440
+      - CORE_OPERATIONS_LISTENADDRESS=peer0.org2.example.com:9440
       - CORE_PEER_TLS_ENABLED=true
       - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/crypto/peer/tls/server.crt
       - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/crypto/peer/tls/server.key
@@ -115,7 +115,7 @@ services:
       - CORE_LEDGER_STATE_COUCHDBCONFIG_USERNAME=
       - CORE_LEDGER_STATE_COUCHDBCONFIG_PASSWORD=
       - CORE_METRICS_PROVIDER=prometheus
-      # - CORE_OPERATIONS_LISTENADDRESS=0.0.0.0:9440
+      - CORE_OPERATIONS_LISTENADDRESS=peer1.org2.example.com:9440
       - CORE_PEER_TLS_ENABLED=true
       - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/crypto/peer/tls/server.crt
       - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/crypto/peer/tls/server.key
