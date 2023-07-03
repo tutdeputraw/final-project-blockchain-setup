@@ -16,12 +16,12 @@ const QueryController_Search = async (req, res) => {
     const contractName = 'real_estate';
     const functionName = 'QueryWithPagination';
 
-    const username = req.body.username;
-    const organizationName = req.body.organizationName;
-    const fieldSearch = req.body.fieldSearch;
-    const keywordSearch = req.body.keywordSearch;
-    const perPage = req.body.perPage;
-    const bookmark = req.body.bookmark;
+    const username = req.query.username;
+    const organizationName = req.query.organizationName;
+    const fieldSearch = req.query.fieldSearch;
+    const keywordSearch = req.query.keywordSearch;
+    const perPage = req.query.perPage;
+    const bookmark = req.query.bookmark;
 
     console.debug('End point : /api/query');
     console.debug('User name : ' + username);

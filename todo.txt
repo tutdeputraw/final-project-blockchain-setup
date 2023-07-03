@@ -16,6 +16,26 @@ vm4	orderer	    - 34.145.91.212
 docker swarm init --advertise-addr $VM_1
 docker swarm join-token manager
 [
+    docker swarm join --token SWMTKN-1-2ev3no3xijlisyp5m7jjl616660znpquw330ezzjco8xmpumwp-56q8rxch28gudp2exw11lelbd 34.125.9.20:2377 --advertise-addr $VM_2
+    docker swarm join --token SWMTKN-1-2ev3no3xijlisyp5m7jjl616660znpquw330ezzjco8xmpumwp-56q8rxch28gudp2exw11lelbd 34.125.9.20:2377 --advertise-addr $VM_3
+    docker swarm join --token SWMTKN-1-2ev3no3xijlisyp5m7jjl616660znpquw330ezzjco8xmpumwp-56q8rxch28gudp2exw11lelbd 34.125.9.20:2377 --advertise-addr $VM_4
+    ..
+    docker swarm join --token SWMTKN-1-17erwxaejavaqtof7tr15mouxqt2dc7uzskcfodfux9sm1p48q-dj5vewv11g98mmztypdy1385q 34.125.9.20:2377 --advertise-addr $VM_2
+    docker swarm join --token SWMTKN-1-17erwxaejavaqtof7tr15mouxqt2dc7uzskcfodfux9sm1p48q-dj5vewv11g98mmztypdy1385q 34.125.9.20:2377 --advertise-addr $VM_3
+    docker swarm join --token SWMTKN-1-17erwxaejavaqtof7tr15mouxqt2dc7uzskcfodfux9sm1p48q-dj5vewv11g98mmztypdy1385q 34.125.9.20:2377 --advertise-addr $VM_4
+    ..
+    docker swarm join --token SWMTKN-1-18ui4phi2yqiroxnwskzzt769ifwi3r50jmyoglf5pvxuid3tl-6sf5qld1mu8ki8jrur829vdy9 34.125.9.20:2377 --advertise-addr $VM_2
+    docker swarm join --token SWMTKN-1-18ui4phi2yqiroxnwskzzt769ifwi3r50jmyoglf5pvxuid3tl-6sf5qld1mu8ki8jrur829vdy9 34.125.9.20:2377 --advertise-addr $VM_3
+    docker swarm join --token SWMTKN-1-18ui4phi2yqiroxnwskzzt769ifwi3r50jmyoglf5pvxuid3tl-6sf5qld1mu8ki8jrur829vdy9 34.125.9.20:2377 --advertise-addr $VM_4
+    ..
+    docker swarm join --token SWMTKN-1-2kws086bx74j9p3zw5eahl7tlfim36unkty4nlec0zpnsxp75k-c1uffdyqclyrz1ytvr0ib334y 34.125.9.20:2377 --advertise-addr $VM_2
+    docker swarm join --token SWMTKN-1-2kws086bx74j9p3zw5eahl7tlfim36unkty4nlec0zpnsxp75k-c1uffdyqclyrz1ytvr0ib334y 34.125.9.20:2377 --advertise-addr $VM_3
+    docker swarm join --token SWMTKN-1-2kws086bx74j9p3zw5eahl7tlfim36unkty4nlec0zpnsxp75k-c1uffdyqclyrz1ytvr0ib334y 34.125.9.20:2377 --advertise-addr $VM_4
+    ..
+    docker swarm join --token SWMTKN-1-04mj4sfv9n9yjqr9qd9gl7mfa55ptcdcz3lzo4wjkf0yu83vwh-556g9e3478rvqb3qymp70wvjg 34.125.9.20:2377 --advertise-addr $VM_2
+    docker swarm join --token SWMTKN-1-04mj4sfv9n9yjqr9qd9gl7mfa55ptcdcz3lzo4wjkf0yu83vwh-556g9e3478rvqb3qymp70wvjg 34.125.9.20:2377 --advertise-addr $VM_3
+    docker swarm join --token SWMTKN-1-04mj4sfv9n9yjqr9qd9gl7mfa55ptcdcz3lzo4wjkf0yu83vwh-556g9e3478rvqb3qymp70wvjg 34.125.9.20:2377 --advertise-addr $VM_4
+    ..
     docker swarm join --token SWMTKN-1-1n06cm1ne3ktwrqao1o96kepwytuofig8jyah17gtaho7ld09f-28vhhqb1y1sro58wkq3eoc1y5 34.125.9.20:2377 --advertise-addr $VM_2
     docker swarm join --token SWMTKN-1-1n06cm1ne3ktwrqao1o96kepwytuofig8jyah17gtaho7ld09f-28vhhqb1y1sro58wkq3eoc1y5 34.125.9.20:2377 --advertise-addr $VM_3
     docker swarm join --token SWMTKN-1-1n06cm1ne3ktwrqao1o96kepwytuofig8jyah17gtaho7ld09f-28vhhqb1y1sro58wkq3eoc1y5 34.125.9.20:2377 --advertise-addr $VM_4
@@ -30,6 +50,14 @@ docker swarm join --token SWMTKN-1-4lbr27xwefrgdt438d7zf9cpx0cj8kgi2xwq8j4lklv72
 
 # docker network create --attachable --driver overlay artifacts_test
 
+# startup docker
+cd FabricMultiHostDeployment/setup1/vm1 && docker-compose up -d && cd create-certificate-with-ca/ && docker-compose up -d && cd ../api-server && docker-compose up -d && cd .. && docker ps
+cd FabricMultiHostDeployment/setup1/vm2 && docker-compose up -d && cd create-certificate-with-ca/ && docker-compose up -d && cd ../api-server && docker-compose up -d && cd .. && docker ps
+cd FabricMultiHostDeployment/setup1/vm3 && docker-compose up -d && cd create-certificate-with-ca/ && docker-compose up -d && cd ../api-server && docker-compose up -d && cd .. && docker ps
+cd FabricMultiHostDeployment/setup1/vm4 && docker-compose up -d
+
+docker-compose up -d && cd create-certificate-with-ca/ && docker-compose up -d && cd ../api-server && docker-compose up -d && cd .. && docker ps
+cd ../../artifacts/chaincodes/real_estate/ && sudo git pull origin main && cd ../../../setup1/vm
 
 # vm1
 # docker-compose up -d 

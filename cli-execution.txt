@@ -9,15 +9,6 @@ export CHANNEL_NAME="mychannel"
 export CC_NAME="real_estate"
 export ORDERER_CA=/etc/hyperledger/channel/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem
 export VERSION="1"
-++++
-export CORE_PEER_LOCALMSPID="Org2MSP"
-export CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/channel/crypto-config/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt
-export CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/channel/crypto-config/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp
-export CORE_PEER_ADDRESS=peer0.org2.example.com:9051
-export CHANNEL_NAME="mychannel"
-export CC_NAME="real_estate"
-export ORDERER_CA=/etc/hyperledger/channel/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem
-export VERSION="1"
 
 #2
 peer lifecycle chaincode commit -o orderer.example.com:7050 --ordererTLSHostnameOverride orderer.example.com \
@@ -50,7 +41,7 @@ peer chaincode invoke -o orderer.example.com:7050 \
         --peerAddresses peer0.org2.example.com:9051 --tlsRootCertFiles /etc/hyperledger/channel/crypto-config/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt  \
          --peerAddresses peer0.org3.example.com:11051 --tlsRootCertFiles /etc/hyperledger/channel/crypto-config/peerOrganizations/org3.example.com/peers/peer0.org3.example.com/tls/ca.crt  \
         -c '{"function": "User_Create","Args":["6666", "brokername", "1234321", "08675841313", "brokeremail"]}'
-peer chaincode invoke -o orderer.example.com:7050 \
+peer chaincode invoke -o 35.228.7.89:7050 \
         --ordererTLSHostnameOverride orderer.example.com \
         --tls \
         --cafile /etc/hyperledger/channel/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem \
@@ -78,7 +69,17 @@ peer chaincode invoke -o orderer.example.com:7050 \
         --peerAddresses peer0.org1.example.com:7051 --tlsRootCertFiles /etc/hyperledger/channel/crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt \
         --peerAddresses peer0.org2.example.com:9051 --tlsRootCertFiles /etc/hyperledger/channel/crypto-config/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt  \
          --peerAddresses peer0.org3.example.com:11051 --tlsRootCertFiles /etc/hyperledger/channel/crypto-config/peerOrganizations/org3.example.com/peers/peer0.org3.example.com/tls/ca.crt  \
-        -c '{"function": "User_Init","Args":[]}'
+        -c '{"function": "RealEstate_Init_Test","Args":[]}'
+
+peer chaincode invoke -o orderer.example.com:7050 \
+        --ordererTLSHostnameOverride orderer.example.com \
+        --tls \
+        --cafile /etc/hyperledger/channel/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem \
+        -C mychannel -n ${CC_NAME} \
+        --peerAddresses peer0.org1.example.com:7051 --tlsRootCertFiles /etc/hyperledger/channel/crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt \
+        --peerAddresses peer0.org2.example.com:9051 --tlsRootCertFiles /etc/hyperledger/channel/crypto-config/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt  \
+         --peerAddresses peer0.org3.example.com:11051 --tlsRootCertFiles /etc/hyperledger/channel/crypto-config/peerOrganizations/org3.example.com/peers/peer0.org3.example.com/tls/ca.crt  \
+        -c '{"function": "User_InitTest","Args":[]}'
 
 peer chaincode invoke -o orderer.example.com:7050 \
         --ordererTLSHostnameOverride orderer.example.com \
@@ -90,8 +91,23 @@ peer chaincode invoke -o orderer.example.com:7050 \
         --peerAddresses peer0.org3.example.com:11051 --tlsRootCertFiles /etc/hyperledger/channel/crypto-config/peerOrganizations/org3.example.com/peers/peer0.org3.example.com/tls/ca.crt  \
         -c '{"function": "User_Create","Args":["8080", "advisorname", "4567654", "08928495429", "advisoremail"]}'
 
+peer chaincode invoke -o orderer.example.com:7050 \
+        --ordererTLSHostnameOverride orderer.example.com \
+        --tls \
+        --cafile /etc/hyperledger/channel/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem \
+        -C mychannel -n ${CC_NAME} \
+        --peerAddresses peer0.org1.example.com:7051 --tlsRootCertFiles /etc/hyperledger/channel/crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt \
+        --peerAddresses peer0.org2.example.com:9051 --tlsRootCertFiles /etc/hyperledger/channel/crypto-config/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt  \
+        --peerAddresses peer0.org3.example.com:11051 --tlsRootCertFiles /etc/hyperledger/channel/crypto-config/peerOrganizations/org3.example.com/peers/peer0.org3.example.com/tls/ca.crt  \
+        -c '{"function": "RealEstate_RegisterNewRealEstate","Args":["8081", "aa11", "aa22", "aa33", "aa44", "aa55", "aa66", "aa77", "aa88", "aa99", "aa100", "aa111", "aa122"]}'
+
 #5
 peer chaincode query -C $CHANNEL_NAME -n ${CC_NAME} -c '{"function": "RealEstate_GetAll","Args":[]}'
 peer chaincode query -C $CHANNEL_NAME -n ${CC_NAME} -c '{"function": "User_GetAll","Args":[]}'
+peer chaincode query -C $CHANNEL_NAME -n ${CC_NAME} -c '{"function": "Query","Args":["{\"selector\":{\"realEstateModel_owner_id\":\"4\"}}", "10", ""]}'
+peer chaincode query -C $CHANNEL_NAME -n ${CC_NAME} -c '{"function": "QueryWithPagination","Args":["{\"selector\":{\"realEstateModel_owner_id\":\"4\"}}", "10", ""]}'
+
+peer chaincode query -C $CHANNEL_NAME -n ${CC_NAME} -c '{"function": "RealEstate_GetAllWithPagination","Args":["3", "real-estate-15"]}'
+peer chaincode query -C $CHANNEL_NAME -n ${CC_NAME} -c '{"function": "RealEstate_GetAllWithPagination","Args":["3", ""]}'
 
 -----------------------------------------------------------------------------------------------------------------------
