@@ -12,19 +12,24 @@ const RealEstateSalesRecordController_UpdateRealEstateAssessment = async (req, r
 
     const userMSP = req.body.userMSP;
     const organizationName = req.body.organizationName;
-    const realEstateSalesRecordId = req.body.realEstateSalesRecordId;
     const realEstateAssessment = req.body.realEstateAssessment;
+    const realEstateId = req.body.realEstateId;
+    const sellerId = req.body.sellerId;
 
     if (!userMSP) {
         res.json(helper.getErrorMessage('\'userMSP\''));
         return;
     }
-    if (!organizationName) {
-        res.json(helper.getErrorMessage('\'organizationName\''));
+    if (!realEstateId) {
+        res.json(helper.getErrorMessage('\'realEstateId\''));
         return;
     }
-    if (!realEstateSalesRecordId) {
-        res.json(helper.getErrorMessage('\'realEstateSalesRecordId\''));
+    if (!sellerId) {
+        res.json(helper.getErrorMessage('\'sellerId\''));
+        return;
+    }
+    if (!organizationName) {
+        res.json(helper.getErrorMessage('\'organizationName\''));
         return;
     }
     if (!realEstateAssessment) {
@@ -32,7 +37,7 @@ const RealEstateSalesRecordController_UpdateRealEstateAssessment = async (req, r
         return;
     }
 
-    const functionArgs = [realEstateSalesRecordId, realEstateAssessment]
+    const functionArgs = [realEstateId, sellerId, realEstateAssessment]
 
     const response = await InvokeHelper(organizationName, userMSP, contractName, functionName, functionArgs);
 
@@ -43,6 +48,7 @@ const RealEstateSalesRecordController_UpdateRealEstateAssessment = async (req, r
     }
 }
 
+const RealEstateSalesRecordController_ = async (req, res) => { }
 
 const RealEstateSalesRecordController_UpdateSalesPhase = async (req, res) => {
     const contractName = 'real_estate';
@@ -50,19 +56,24 @@ const RealEstateSalesRecordController_UpdateSalesPhase = async (req, res) => {
 
     const userMSP = req.body.userMSP;
     const organizationName = req.body.organizationName;
-    const realEstateSalesRecordId = req.body.realEstateSalesRecordId;
+    const realEstateId = req.body.realEstateId;
+    const sellerId = req.body.sellerId;
     const salesPhase = req.body.salesPhase;
 
     if (!userMSP) {
         res.json(helper.getErrorMessage('\'userMSP\''));
         return;
     }
-    if (!organizationName) {
-        res.json(helper.getErrorMessage('\'organizationName\''));
+    if (!realEstateId) {
+        res.json(helper.getErrorMessage('\'realEstateId\''));
         return;
     }
-    if (!realEstateSalesRecordId) {
-        res.json(helper.getErrorMessage('\'realEstateSalesRecordId\''));
+    if (!sellerId) {
+        res.json(helper.getErrorMessage('\'sellerId\''));
+        return;
+    }
+    if (!organizationName) {
+        res.json(helper.getErrorMessage('\'organizationName\''));
         return;
     }
     if (!salesPhase) {
@@ -70,7 +81,7 @@ const RealEstateSalesRecordController_UpdateSalesPhase = async (req, res) => {
         return;
     }
 
-    const functionArgs = [realEstateSalesRecordId, salesPhase]
+    const functionArgs = [realEstateId, sellerId, salesPhase]
 
     const response = await InvokeHelper(organizationName, userMSP, contractName, functionName, functionArgs);
 
