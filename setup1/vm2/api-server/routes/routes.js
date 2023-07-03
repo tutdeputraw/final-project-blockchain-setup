@@ -42,6 +42,8 @@ router.get('/realEstate/history/getByRealEstateId', realEstateHistoryController.
 const realEstateSalesRecordController = require('../controllers/realEstateSalesRecordController');
 router.get('/realEstate/salesRecord/getByRealEstateId', realEstateSalesRecordController.RealEstateSalesRecordController_GetByRealEstateId);
 router.post('/realEstate/salesRecord/updateSalesPhase', realEstateSalesRecordController.RealEstateSalesRecordController_UpdateSalesPhase);
+router.post('/realEstate/salesRecord/updatePropertyAdvisorId', realEstateSalesRecordController.RealEstateSalesRecordController_UpdatePropertyAdvisorId);
+router.post('/realEstate/salesRecord/updatePropertyAgentId', realEstateSalesRecordController.RealEstateSalesRecordController_UpdatePropertyAgentId);
 
 
 const queryController = require('../controllers/queryController');

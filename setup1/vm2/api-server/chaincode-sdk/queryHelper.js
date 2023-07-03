@@ -16,7 +16,7 @@ const QueryHelper = async (org, user, contractName, functionName, functionArgs) 
         }
 
         const gateway = new Gateway();
-        console.log("KAKA", ccp);
+        // console.log("KAKA", ccp);
         await gateway.connect(ccp, { wallet, identity: user, discovery: { enabled: true, asLocalhost: false } });
 
         const network = await gateway.getNetwork('mychannel');
@@ -25,6 +25,7 @@ const QueryHelper = async (org, user, contractName, functionName, functionArgs) 
 
         const result = await contract.evaluateTransaction(functionName, ...functionArgs);
 
+        console.log("result:", result.toString());
         await gateway.disconnect();
 
         return helper.responseSuccess(
