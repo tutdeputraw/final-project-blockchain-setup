@@ -23,6 +23,7 @@ const QueryHelper = async (org, user, contractName, functionName, functionArgs) 
         const contract = network.getContract(contractName);
 
         const result = await contract.evaluateTransaction(functionName, ...functionArgs);
+        console.log("result:", result.toString());
 
         await gateway.disconnect();
 
