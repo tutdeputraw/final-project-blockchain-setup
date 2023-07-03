@@ -15,8 +15,9 @@ router.post('/user/init', userController.UserController_Init);
 router.get('/user/checkIfUserExist', userController.UserController_CheckIfUserExist);
 router.get('/user/getById', userController.UserController_GetById);
 router.get('/user/getAll', userController.UserController_GetAll);
+router.get('/user/getAllWithPagination', userController.UserController_GetAllWithPagination);
 router.get('/user/getByEmailAndName', userController.UserController_GetUserByNameAndEmail);
-router.get('/user/create', userController.UserController_Create);
+router.post('/user/create', userController.UserController_Create);
 
 
 const realEstateController = require('../controllers/realEstateController');
@@ -24,6 +25,7 @@ router.post('/realEstate/init', realEstateController.RealEstateController_Init);
 router.post('/realEstate/create', realEstateController.RealEstateController_Create);
 router.get('/realEstate/getById', realEstateController.RealEstateController_GetById);
 router.get('/realEstate/getAll', realEstateController.RealEstateController_GetAll);
+router.get('/realEstate/getAllWithPagination', realEstateController.RealEstateController_GetAllWithPagination);
 router.get('/realEstate/getByOwner', realEstateController.RealEstateController_GetByOwner);
 router.get('/realEstate/CheckIfRealEstateHasAlreadyRegistered', realEstateController.RealEstateController_CheckIfRealEstateHasAlreadyRegistered);
 router.post('/realEstate/RegisterNewRealEstate', realEstateController.RealEstateController_RegisterNewRealEstate);
